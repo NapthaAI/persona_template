@@ -41,8 +41,25 @@ For each persona, you will see a url where you can check out the data.
 
 Change the filename and content of the `data/richard.json` file to create your own persona.
 
+When ready, you can push to your personal GitHub, HuggingFace or IPFS. Make sure to change the remote origin:
+
 ```bash
-naptha personas persona_name -p "description='Persona for <persona_name>' parameters='{name: str, bio: List, lore: List, adjectives: List, topics: List, style: Dict[str, List], messageExamples: List, postExamples: List}' module_url='https://huggingface.co/datasets/persona_name/social_persona' module_entrypoint='data/richard.json'" 
+git remote rm origin
+git remote add origin https://github.com/persona_name/persona_template.git
+```
+
+Also add a new module version number using e.g.:
+
+```bash
+git tag v0.1
+```
+
+```bash
+git push --tags
+```
+
+```bash
+naptha personas persona_name -p "description='Persona for <persona_name>' parameters='{name: str, bio: List, lore: List, adjectives: List, topics: List, style: Dict[str, List], messageExamples: List, postExamples: List}' module_url='https://github.com/persona_name/persona_template' module_version='v0.1' module_entrypoint='data/richard.json'" 
 ```
 
 Make sure that the `module_url` is the url of the main repo (e.g the huggingface dataset, github repo, or repo stored on ipfs) and the `module_entrypoint` is the path to the file in the dataset (currently can be json or yaml).

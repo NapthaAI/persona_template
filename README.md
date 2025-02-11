@@ -26,7 +26,7 @@ You can install the module using:
 
 ```bash
 poetry install
-poetry shell
+source .venv/bin/activate
 ```
 
 You can now use the Naptha CLI. For example, list other examples using:
